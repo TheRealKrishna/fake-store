@@ -1,0 +1,34 @@
+.yellowBox {
+    border-top: 1px solid black;
+    border-left:  1px solid black;
+    border-bottom:  1px solid black;
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+    border-top-left-radius: 8px;
+}
+
+.lightBox {
+    border-top: 1px solid black;
+    border-right:  1px solid black;
+    border-bottom:  1px solid black;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}   
+
+.inputs{
+    margin-top: 60px;
+    width: 80%;
+    display: flex;
+    gap: 16px;
+    font-size: 20px;
+}
+
+.inputs > input {
+    border: none;
+    border-bottom: 1px solid black;
+    outline: none;
+    width: 100%;
+}

@@ -1,0 +1,34 @@
+.productImage{
+    border: .1px solid rgb(226, 226, 226);
+    padding: 15px;
+}
+
+.productInfo {
+    margin-top: 40px;
+    margin-left: 40px;
+}
+
+.productTitle{
+
+}
+
+.productRatingText{
+    margin-bottom: 50px;
+}
+
+.productDescription{
+    margin-bottom: 80px;
+}
+
+.productPrice{
+    margin-bottom: 15px;
+}
+
+.addToCart{
+    border: 1px solid black;
+}
+
+.buyNow {
+    border: 1px solid black;
+    margin-left: 5px;
+}
