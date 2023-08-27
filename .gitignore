@@ -12,6 +12,8 @@
 /.next/
 /out/
 
+/fake-store.zip
+
 # production
 /build
 
