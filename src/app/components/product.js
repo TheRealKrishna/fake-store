@@ -6,7 +6,6 @@ import '@fortawesome/fontawesome-free/css/all.min.css';
 import Styles from "./product.module.css"
 
 export default function Product(props) {
-  console.log(props._id)
   return (
     <div>
       <Link href={`/product/${props._id}`} style={{textDecoration: "none"}}>

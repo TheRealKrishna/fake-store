@@ -4,7 +4,7 @@ import '@fortawesome/fontawesome-free/css/all.min.css';
 import Link from "next/link";
 import { usePathname } from 'next/navigation'
 import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useSearchParams } from 'next/navigation'
 import { toast } from "react-hot-toast";
 

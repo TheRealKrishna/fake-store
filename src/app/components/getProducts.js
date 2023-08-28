@@ -1,10 +1,10 @@
 "use client"
 
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Product from "./product";
-import Styles from "./getProduct.module.css"
 import Loader from "./loader";
 import { usePathname, useSearchParams } from "next/navigation";
+import loaderProgressContext from "../context/loaderProgress";
 
 export default function GetProducts(props) {
   const searchParams = useSearchParams();
@@ -23,8 +23,10 @@ export default function GetProducts(props) {
 
     const fetchProducts = async ()=>{ 
      if(searchParams.get('search')){
-        const response = await fetch(`/api/products/getAllProducts`).then(data=>data.json()).then(data=>searchItems(data, searchParams.get('search'))).then(data=>setProducts(data))
-        return response;
+        const response = await fetch(`/api/products/getAllProducts`)
+        const json = await response.json();
+        const data = await searchItems(json, searchParams.get('search'));
+        setProducts(data);
       }
 
       else if(props.category){
