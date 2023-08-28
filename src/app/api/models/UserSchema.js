@@ -26,33 +26,29 @@ const UserSchema = new mongoose.Schema({
         type: String,
         default: ""
     },
+    gender:{
+        type:String,
+        default: ""
+    },
     phoneNumber: {
         type: Number,
         default: ""
     },
-    address1:{
-        type: String,
-        default: ""
+    address:{
+        type:Object,
+        default:{
+            address1: "",
+            address2: "",
+            zipcode: "",
+            city: "",
+            state: "",
+            country: "",
+            phoneNumber: "",
+        },
     },
-    address2:{
-        type: String,
-        default: ""
-    },
-    zipcode:{
-        type: Number,
-        default: ""
-    },
-    city: {
-        type: String,
-        default: ""
-    },
-    state: {
-        type: String,
-        default: ""
-    },
-    country: {
-        type: String,
-        default: ""
+    cart: {
+        type: Array,
+        default:[]
     },
 })
 

@@ -1,11 +1,11 @@
-import { connectMongoDB } from "../../libs/MongoConnect";
-import Products from "../../models/ProductsSchema";
-import User from "../../models/UserSchema";
+import { connectMongoDB } from "@/app/api/libs/MongoConnect";
+import Products from "@/app/api/models/ProductsSchema";
+import User from "@/app/api/models/UserSchema";
 import { NextResponse } from "next/server";
 import JWT from "jsonwebtoken"
 import { headers } from 'next/headers';
 
-export async function POST(request){
+export async function POST(request, params){
     try{
         const req = await request.json();
         const header = headers();
@@ -13,13 +13,11 @@ export async function POST(request){
         await connectMongoDB();
         const _id = JWT.verify(token, process.env.JWT_SECRET)._id
         const user = await User.findOne({_id:_id})
-        console.log(user)
-        if(!user && user.type !== "admin"){
-            return NextResponse.json({error:"Access Denied!",success:false}, {status:500} )
+        if(!user){
+            return NextResponse.json({error:"Invalid User!",success:false}, {status:500})
         }
-        const product = await new Products(req)
-        await product.save();
-        return NextResponse.json({success:true, _id:product._id}, {status:200})
+        const cart = user.cart
+        return NextResponse.json({cart, success:true}, {status:200})
     }
     catch(err){
         console.log(err);

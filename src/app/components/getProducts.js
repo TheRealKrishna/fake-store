@@ -5,6 +5,7 @@ import Product from "./product";
 import Loader from "./loader";
 import { usePathname, useSearchParams } from "next/navigation";
 import loaderProgressContext from "../context/loaderProgress";
+import InfiniteScroll from 'react-infinite-scroll-component';
 
 export default function GetProducts(props) {
   const searchParams = useSearchParams();
@@ -18,7 +19,6 @@ export default function GetProducts(props) {
             <h3>Sorry! No Results Found!</h3>
           </div>
       )
-
     }
 
     const fetchProducts = async ()=>{ 

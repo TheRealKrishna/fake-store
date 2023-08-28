@@ -6,7 +6,7 @@ import 'bootstrap/dist/css/bootstrap.css'
 import { Toaster } from 'react-hot-toast'
 import LoadingBar from 'react-top-loading-bar'
 import loaderProgressContext from './context/loaderProgress'
-import { useState } from 'react'
+import React, { useState } from 'react';
 
 const inter = Inter({ subsets: ['latin'] })
 
