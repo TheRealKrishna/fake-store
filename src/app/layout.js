@@ -9,6 +9,7 @@ import loaderProgressContext from './context/loaderProgress'
 import cartContext from './context/cart'
 import React, { useEffect, useState } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation'
+import NextProgress from "next-progress";
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -39,6 +40,7 @@ export default function RootLayout({ children }) {
     fetchCart();
   },[router.pathname])
 
+
   return (
     <html lang="en">
       <body className={inter.className}>
@@ -54,6 +56,7 @@ export default function RootLayout({ children }) {
         position="top-center"
         reverseOrder={false}
       />
+      <NextProgress />
       {children}
       </cartContext.Provider>
       </loaderProgressContext.Provider>

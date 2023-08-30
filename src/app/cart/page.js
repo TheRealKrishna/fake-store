@@ -5,6 +5,8 @@ import Loader from "@/app/components/loader";
 import { useContext, useEffect, useState } from "react";
 import Image from "next/image";
 import cartContext from "../context/cart";
+import CartLoader from "./cartLoader";
+import Link from "next/link";
 
 export default function Page() {
   const router = useRouter();
@@ -39,17 +41,23 @@ export default function Page() {
               products ?
               Object.keys(cart)?.length > 0 ? products.map((product)=>{
                 return (
-                  <div className="container" key={product._id}>
-                  <Image src={product.image} height={200} width={200} alt="Product Image"></Image>
-                  {product._id}
-                  <hr />
+                  <>
+                  <div className="container d-flex" key={product._id}>
+                  <div className="image-container" style={{width: "20%", height: "200px", position: "relative"}}>
+                  <Link href={`/product/${product._id}`} style={{textDecoration:"none", color:"black"}}>
+                  <Image className="card-img-top" src={product.image} sizes="5" fill={true} style={{objectFit:"contain"}} alt="product image"/>
+                  </Link>
                   </div>
+                  <h5 className={Styles.productTitle}><Link href={`/product/${product._id}`} style={{textDecoration:"none", color:"black"}}>{product.title}</Link></h5>
+                  </div>
+                  <hr />
+                  </>
                 )
               })
               :
               <h3>Your Cart Is Empty</h3>
               :
-              <Loader/>
+                <CartLoader/>
             }
           </div>
           </div>

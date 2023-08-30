@@ -1,5 +1,5 @@
 .outerContainer{
-    margin: 20px;
+    margin: 0px 20px;
 }
 
 .cartContainer {
@@ -9,12 +9,17 @@
     margin-right: 10px;
     box-shadow:1px 1px 5px gray;
     border-radius: 4px;
+    min-height: 580px;
 }
 
 .shoppingCartHeading {
     margin: 10px 20px;
     font-family: 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     font-size: bold;
+}
+
+.productTitle{
+    padding: 30px;
 }
 
 .purchaseContainer {

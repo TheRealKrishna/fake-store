@@ -81,7 +81,7 @@ useEffect(()=>{
       product ? product?.title ?
         <div className="d-flex mt-5">
             <div className={Styles.productImage}>
-                <Image src={product.image} alt="Product Image" width={500} height={500}></Image>
+                <Image src={product.image} sizes="5" alt="Product Image" fill={true} style={{objectFit:"contain"}}></Image>
             </div>
             <div className={Styles.productInfo}>
             <h2 className={Styles.productTitle}>{product.title}</h2>
