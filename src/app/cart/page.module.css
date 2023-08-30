@@ -1,0 +1,28 @@
+.outerContainer{
+    margin: 20px;
+}
+
+.cartContainer {
+    width: 1100px;
+    background: red;
+    margin: 40px;
+    margin-right: 10px;
+    box-shadow:1px 1px 5px gray;
+    border-radius: 4px;
+}
+
+.shoppingCartHeading {
+    margin: 10px 20px;
+    font-family: 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: bold;
+}
+
+.purchaseContainer {
+    width: 300px;
+    background: blue;
+    margin: 40px;
+    margin-left: 10px;
+    box-shadow:1px 1px 5px gray;
+    border-radius: 4px;
+    height: 150px;
+}

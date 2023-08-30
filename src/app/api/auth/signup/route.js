@@ -16,7 +16,7 @@ export async function POST(request){
         const securePassword = bcrypt.hashSync(req.password, await bcrypt.genSaltSync(10));
         const user = new User({
             email: req.email,
-            password: securePassword
+            password: securePassword,
         })
         await user.save();
         const token = JWT.sign({_id: req._id}, process.env.JWT_SECRET);

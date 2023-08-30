@@ -7,7 +7,6 @@ import { headers } from 'next/headers';
 
 export async function POST(request, params){
     try{
-        const req = await request.json();
         const header = headers();
         const token = header.get('auth-token');
         await connectMongoDB();

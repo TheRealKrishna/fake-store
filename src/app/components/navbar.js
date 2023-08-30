@@ -2,28 +2,39 @@
 import Styles from "./navbar.module.css"
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import Link from "next/link";
-import { usePathname } from 'next/navigation'
-import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
-import { useSearchParams } from 'next/navigation'
+import { useSearchParams, usePathname, useRouter } from "next/navigation";
+import { useContext, useEffect, useState } from "react";
 import { toast } from "react-hot-toast";
+import cartContext from "../context/cart";
 
 export default function Navbar(params) {
-  const pathname = usePathname();
   const router = useRouter();
   const searchParams = useSearchParams();
+  const pathname = usePathname();
 
   const [profileMenu, setProfileMenu] = useState(false);
   const [searchKeyword, setSearchKeyword] = useState(searchParams.get('search') ? searchParams.get('search') : "");
+  const {cart, setCart, fetchCart} = useContext(cartContext);
+  const [cartSum, setCartSum] = useState(false);
 
   const toggleProfileMenu = ()=>{
     if(localStorage.getItem('auth-token')){
-      setProfileMenu(!profileMenu)
+      setProfileMenu(!profileMenu);
     }
     else{
-      router.push("/member/profile")
+      router.push("/member/profile");
     }
   }
+
+  const fetchCartSum = async (cart)=>{
+    if(cart){
+      const values = Object.values(cart);
+      const sum = values.reduce((accumulator, value) => {
+        return accumulator + value;
+      }, 0);
+      setCartSum(sum);
+    }
+    }
 
   const searchChangeHandler = (e)=>{
     setSearchKeyword(e.target.value) 
@@ -37,6 +48,7 @@ export default function Navbar(params) {
       }
       else{
         setProfileMenu(!profileMenu)
+        setCart(false)
         router.push("/")
         resolve();
       }
@@ -57,7 +69,8 @@ export default function Navbar(params) {
 
   useEffect(()=>{
     setProfileMenu(false)
-  },[searchParams, router.pathname])
+    fetchCartSum(cart)
+  },[searchParams, router.pathname, cart])
 
   return (
     <div>
@@ -88,7 +101,8 @@ export default function Navbar(params) {
           </form>
         </div>
         <div style={{marginRight: "30px"}}>
-          <Link href="/cart">
+          <Link href="/cart" >
+          {cart && <h4 className={Styles.cartCount}>{cartSum}</h4>}
             <i className={Styles.navIcon + " fas fa-cart-shopping"}/>
           </Link>
             <i onClick={toggleProfileMenu} className={Styles.navIcon + " fas fa-circle-user"}></i>

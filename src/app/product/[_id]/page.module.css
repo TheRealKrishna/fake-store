@@ -25,10 +25,34 @@
 }
 
 .addToCart{
-    border: 1px solid black;
+    outline: 0px solid black;
+    width: 120px;
+    height: 40px;
 }
 
 .buyNow {
-    border: 1px solid black;
-    margin-left: 5px;
+    outline: 0px solid black;
+    width: 120px;
+    height: 40px;
+    margin-left: 15px;
+}
+
+.plusToCart{
+    height: 40px;
+    width: 40px;
+    font-weight: bold;
+    font-family:'Lucida Sans Unicode';
+}
+
+.numberOfItems{
+    margin:0px 10px;
+    margin-top: 5px;
+    font-size: bold;
+}
+
+.minusFromCart{
+    height: 40px;
+    width: 40px;
+    font-weight: bold;
+    font-family:'Lucida Sans Unicode';
 }

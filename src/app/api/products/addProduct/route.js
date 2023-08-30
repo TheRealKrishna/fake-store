@@ -13,8 +13,7 @@ export async function POST(request){
         await connectMongoDB();
         const _id = JWT.verify(token, process.env.JWT_SECRET)._id
         const user = await User.findOne({_id:_id})
-        console.log(user)
-        if(!user && user.type !== "admin"){
+        if(!user || user.type !== "admin"){
             return NextResponse.json({error:"Access Denied!",success:false}, {status:500} )
         }
         const product = await new Products(req)

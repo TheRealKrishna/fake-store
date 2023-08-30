@@ -7,7 +7,6 @@ import { headers } from 'next/headers';
 
 export async function POST(request, params){
     try{
-        const req = await request.json();
         const header = headers();
         const token = header.get('auth-token');
         await connectMongoDB();
@@ -21,7 +20,12 @@ export async function POST(request, params){
             return NextResponse.json({error:"Invalid Product!",success:false}, {status:500})
         }
         let cart = await user.cart
-        await cart.push(product._id)
+        if(product._id in cart){
+            cart[product._id] += 1;
+        }
+        else{
+            cart[product._id] = 1;
+        }
         const newUser = await User.findOneAndUpdate({_id:_id},{cart:cart})
         await newUser.save();
         return NextResponse.json({cart, success:true}, {status:200})

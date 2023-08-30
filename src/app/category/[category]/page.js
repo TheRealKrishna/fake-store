@@ -11,13 +11,13 @@ export default function Page(params) {
           {
             searchParams.get('search') ?
             <>
-            <span style={{fontSize: "30px", backgroundColor: "white", paddingLeft: "10px"}}><strong>Search results for: </strong></span>
-            <span style={{fontSize: "30px", backgroundColor: "white", paddingRight: "10px"}}>{searchParams.get('search')}</span>
+            <span style={{fontSize: "30px", backgroundColor: "#EAEDED", paddingLeft: "10px"}}><strong>Search results for: </strong></span>
+            <span style={{fontSize: "30px", backgroundColor: "#EAEDED", paddingRight: "10px"}}>{searchParams.get('search')}</span>
             </>
             
             :
 
-            <span style={{fontSize: "30px", backgroundColor: "white", padding: "0 10px"}}>{params.params.category.slice(0, 1).toUpperCase() + params.params.category.slice(1).replace(/%20/g, " ")}</span>
+            <span style={{fontSize: "30px", backgroundColor: "#EAEDED", padding: "0 10px"}}>{params.params.category.slice(0, 1).toUpperCase() + params.params.category.slice(1).replace(/%20/g, " ")}</span>
             
 
           }
