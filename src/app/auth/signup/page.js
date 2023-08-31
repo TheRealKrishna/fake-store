@@ -75,7 +75,7 @@ export default function Page() {
 
 if(localStorage.getItem("auth-token")){
     router.push("/")
-    return(<Loader></Loader>)
+    return(<Loader marginTop="300px" marginBottom="300px"></Loader>)
 }
 else{
   return (
@@ -106,7 +106,7 @@ else{
             <i className={`fa-solid ${passwordRevealIcon}`} onClick={revealPassword} style={{color: "#000000", position: "absolute", right:"360px", marginTop: "7px", cursor: "pointer"}}></i>
             </div>
 
-            <p style={{color:"grey", margin:"25px 90px"}}>By continuing, you agree to FakeStore&apos;s <a style={{textDecoration:"none"}} href="/pages/terms-of-use" target="_blank">Terms of Use</a> and <a style={{textDecoration:"none"}} href="/pages/terms-of-use" target="_blank">Privacy Policy</a>.</p>
+            <p style={{color:"grey", margin:"25px 90px"}}>By continuing, you agree to FakeStore&apos;s <a style={{textDecoration:"none"}} href="/pages/terms-of-service" target="_blank">Terms of Service</a> and <a style={{textDecoration:"none"}} href="/pages/terms-of-service" target="_blank">Privacy Policy</a>.</p>
 
             <div className={Styles.inputs} style={{margin:"0px"}}>
             <button className="btn btn-warning" style={{marginLeft:"30px"}} type="submit">Sign Up</button>

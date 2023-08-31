@@ -75,7 +75,7 @@ export default function Page() {
 
 if(localStorage.getItem("auth-token")){
     router.push("/")
-    return(<Loader></Loader>)
+    return(<Loader marginTop="300px" marginBottom="300px"></Loader>)
 }
 else{
   return (

@@ -1,5 +1,4 @@
 import React from "react"
-import ContentLoader from "react-content-loader"
 
 const CartLoader = (props) => (
   <div style={{textAlign:"center"}}>

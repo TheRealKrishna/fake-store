@@ -1,0 +1,15 @@
+.footer {
+    background-color: #131921;
+}
+
+.navList > li > a{
+    color: rgb(162, 162, 162);
+}
+
+.navList > li > a:hover{
+    color: #d4a15f;
+}
+
+.socials > ul > li > a > i:hover{
+    color: rgb(163, 128, 79) !important;
+}

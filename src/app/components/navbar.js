@@ -6,6 +6,7 @@ import { useSearchParams, usePathname, useRouter } from "next/navigation";
 import { useContext, useEffect, useState } from "react";
 import { toast } from "react-hot-toast";
 import cartContext from "../context/cart";
+import ContentLoader from "react-content-loader";
 
 export default function Navbar(params) {
   const router = useRouter();
@@ -16,6 +17,7 @@ export default function Navbar(params) {
   const [searchKeyword, setSearchKeyword] = useState(searchParams.get('search') ? searchParams.get('search') : "");
   const {cart, setCart, fetchCart} = useContext(cartContext);
   const [cartSum, setCartSum] = useState(false);
+  const [categories, setCategories] = useState(false);
 
   const toggleProfileMenu = ()=>{
     if(localStorage.getItem('auth-token')){
@@ -24,6 +26,12 @@ export default function Navbar(params) {
     else{
       router.push("/member/profile");
     }
+  }
+
+  const getCategories = async()=>{
+    const response = await fetch("/api/products/getCategories");
+    const json = await response.json();
+    setCategories(await json.categories)
   }
 
   const fetchCartSum = async (cart)=>{
@@ -68,6 +76,7 @@ export default function Navbar(params) {
   }
 
   useEffect(()=>{
+    getCategories();
     setProfileMenu(false)
     fetchCartSum(cart)
   },[searchParams, router.pathname, cart])
@@ -76,21 +85,7 @@ export default function Navbar(params) {
     <div>
       <nav className={Styles.navbar}>
        <div className={Styles.pass}>
-        <div className={Styles.opp}><Link href="/">Fake Store</Link></div>
-        <ul>  
-          
-            <li className={`${Styles.navLi} ${pathname === "/" ? Styles.navLiActive : ""}`}><Link href={"/"}>Home</Link></li>
-
-            <li className={`${Styles.navLi} ${pathname === "/category/electronics" ? Styles.navLiActive : ""}`}><Link href={"/category/electronics"}>Electronics</Link></li>
-
-            <li className={`${Styles.navLi} ${pathname === "/category/jewelery" ? Styles.navLiActive : ""}`}><Link href={"/category/jewelery"}>Jewelery</Link></li>
-
-            <li className={`${Styles.navLi} ${pathname === "/category/men's%20clothing" ? Styles.navLiActive : ""}`}>
-              <Link href={"/category/men's clothing"}>Men&apos;s clothing</Link>
-            </li>
-            
-            <li className={`${Styles.navLi} ${pathname === "/category/women's%20clothing" ? Styles.navLiActive : ""}`}><Link href={"/category/women's clothing"}>Women&apos;s clothing</Link></li>
-        </ul>
+        <div className={Styles.opp}><Link href="/" style={{fontFamily:"cursive"}}>Fake Store</Link></div>
         <div>
           <form onSubmit={(e)=>{ 
             e.preventDefault();
@@ -108,6 +103,51 @@ export default function Navbar(params) {
             <i onClick={toggleProfileMenu} className={Styles.navIcon + " fas fa-circle-user"}></i>
         </div>
        </div>
+      </nav>
+      <nav className={Styles.categoryBar}>
+      <ul>   
+
+        {
+          categories
+          ? 
+          <>
+          <li className={`${Styles.navLi} ${pathname === "/" ? Styles.navLiActive : ""}`}><Link href={"/"}>Home</Link></li>
+          {
+          categories.map((category)=>{
+            return(
+              <>
+            <li className={`${Styles.navLi} ${pathname === `/category/${category.replace(" ", "%20")}` ? Styles.navLiActive : ""}`}><Link href={`/category/${category}`}>{category.slice(0, 1).toUpperCase() + category.slice(1)}</Link></li>
+            </>
+            )
+          })
+          }
+          </>
+          :
+          <>
+          {
+            Array.from(Array(10), ()=>{
+              return(
+              <>
+              <li className={`${Styles.navLi}`}><a>
+              <ContentLoader 
+                  speed={1}
+                  width={100}
+                  height={110}
+                  viewBox="0 0 100 100"
+                  backgroundColor="#dedede"
+                  foregroundColor="#bfbfbf"
+                >
+                <rect x="0" y="0" rx="3" ry="3" width="80" height="15" />
+              </ContentLoader>
+              </a>
+              </li>
+              </>
+              )
+            })
+          }
+          </>
+        }
+      </ul>
       </nav>
       {
       profileMenu

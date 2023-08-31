@@ -103,7 +103,7 @@ useEffect(()=>{
             </div>
             </div>
         </div>
-        : displayNoResultsFound() : <Loader/>
+        : displayNoResultsFound() : <Loader marginTop="300px" marginBottom="300px"/>
       }
     </div>
   )

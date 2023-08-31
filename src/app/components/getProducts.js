@@ -83,7 +83,7 @@ export default function GetProducts(props) {
           )})} 
           </div>
           </div>  
-          : displayNoResultsFound() : <Loader/>
+          : displayNoResultsFound() : <Loader marginTop={pathname !== "/" || searchParams.get("search") ? "300px" : "0px"} marginBottom="300px"/>
         }
     </div>
   )
