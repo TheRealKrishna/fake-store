@@ -27,5 +27,8 @@
     "react-router-dom": "^6.15.0",
     "react-top-loading-bar": "^2.3.1",
     "registry.npmjs.org": "^1.0.1"
+  },
+  "engines": {
+    "node": "18.17.1"
   }
 }
