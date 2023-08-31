@@ -57,14 +57,16 @@ export default function Product(props) {
   return (
     <div>
       <Link href={`/product/${props._id}`} style={{textDecoration: "none"}}>
-      <div className="card" style={{width: "20rem", height:"500px"}}>
-        <div className="image-container" style={{width: "100%", height: "250px", position: "relative"}}>
+      <div className="card" style={{width: "20rem", minHeight:"500px"}}>
+        <div className="image-container" style={{width: "100%", height: "200px", position: "relative"}}>
           <Image className="card-img-top" src={props.image} sizes="5" fill={true} style={{objectFit:"contain"}} alt="Card image cap"/>
         </div>
-        <div className="card-body">
-            <h5 className="card-title">{props.title}</h5>
-            <p className="card-text">{props.description.slice(0, 100) + "..."}</p>
+        <div className="card-body  d-flex flex-column align-content-between justify-content-between flex-wrap">
+          <div>
+            <h5 className="card-title">{props.title.slice(0, 50) + "..."}</h5>
+            <p className="card-text" style={{color:"#696969"}}>{props.description.slice(0, 100) + "..."}</p>
             <p className="rating-text" style={{fontSize: "14px"}}>{props.rating.rate}<i className="fas fa-star" style={{color: "#ffbb00"}}></i> ({props.rating.count})</p>
+          </div>
             <div className="d-flex justify-content-between">
               <h4 className={Styles.price}>{`$${props.price}`}</h4>
               {

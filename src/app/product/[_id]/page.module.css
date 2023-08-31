@@ -1,8 +1,8 @@
 .productImage{
     border: .1px solid rgb(226, 226, 226); 
     margin-top: 45px;
-    width: 400px;
-    height: 400px;
+    min-width: 400px;
+    min-height: 400px;
     position: relative;
 }
 
@@ -21,6 +21,7 @@
 
 .productDescription{
     margin-bottom: 80px;
+    color: #4a4a4a;
 }
 
 .productPrice{

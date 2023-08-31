@@ -2,15 +2,13 @@
     outline: 0px solid black;
     width: 120px;
     height: 40px;
-    margin-top: 40px;
 }
 
 .price {
-    margin-top: 40px;
+
 }
 
 .plusToCart{
-    margin-top: 40px;
     height: 40px;
     width: 40px;
     font-weight: bold;
@@ -18,13 +16,11 @@
 }
 
 .numberOfItems{
-    margin:0px 10px;
-    margin-top: 45px;
+    margin:5px 10px;
     font-size: bold;
 }
 
 .minusFromCart{
-    margin-top: 40px;
     height: 40px;
     width: 40px;
     font-weight: bold;

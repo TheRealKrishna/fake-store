@@ -17,9 +17,25 @@
     font-family: 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     font-size: bold;
 }
+.productInfo {
+    margin: 30px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: space-between;
+    justify-content: space-between;
+}
+
+.productDescription{
+    color: gray;
+}
+
 
 .productTitle{
-    padding: 30px;
+    
+}
+.price {
+
 }
 
 .purchaseContainer {
@@ -30,4 +46,26 @@
     box-shadow:1px 1px 5px gray;
     border-radius: 4px;
     height: 150px;
+}
+
+.plusToCart{
+    height: 40px;
+    width: 40px;
+    font-weight: bold;
+    font-family:'Lucida Sans Unicode';
+    margin-top: 50px;
+}
+
+.numberOfItems{
+    margin:0px 10px;
+    font-size: bold;
+    margin-top: 55px;
+}
+
+.minusFromCart{
+    height: 40px;
+    width: 40px;
+    font-weight: bold;
+    font-family:'Lucida Sans Unicode';
+    margin-top: 50px;
 }
