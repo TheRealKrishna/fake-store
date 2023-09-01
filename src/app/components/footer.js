@@ -1,7 +1,6 @@
 "use client"
 import Link from "next/link";
 import Styles from "./footer.module.css"
-import '@fortawesome/fontawesome-free/css/all.min.css';
 
 export default function Footer() {
   return (
@@ -48,7 +47,7 @@ export default function Footer() {
                 <h5>Subscribe to our newsletter</h5>
                 <p>Monthly digest of what&apos;s new and exciting from us.</p>
                 <div className="d-flex flex-column flex-sm-row w-100 gap-2">
-                    <label for="newsletter1" className="visually-hidden">Email address</label>
+                    <label htmlFor="newsletter1" className="visually-hidden">Email address</label>
                     <input id="newsletter1" type="email" required className="form-control" placeholder="Email address"/>
                     <button className="btn btn-warning" type="submit">Subscribe</button>
                 </div>

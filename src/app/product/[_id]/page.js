@@ -4,7 +4,6 @@ import { useContext, useEffect, useRef, useState } from "react"
 import Styles from "./page.module.css"
 import Image from "next/image";
 import Loader from "@/app/components/loader";
-import '@fortawesome/fontawesome-free/css/all.min.css';
 import cartContext from "@/app/context/cart";
 import { toast } from "react-hot-toast";
 
@@ -13,10 +12,6 @@ export default function Page(params) {
   const {cart, setCart, fetchCart} = useContext(cartContext);
   const [addToCartText, setAddToCartText] = useState("Add To Cart")
   const addToCartButton = useRef();
-  const plusButton = useRef();
-  const minusButton = useRef();
-  const [plusText, setPlusText] = useState("+");
-  const [minusText, setMinusText] = useState("-");
 
   const getProduct = async()=>{
     const response = await fetch(`/api/products/${params.params._id}`);
@@ -35,10 +30,9 @@ export default function Page(params) {
 
   const addToCart = async(e)=>{
     e.preventDefault()
-    addToCartButton.current ? addToCartButton.current.disabled = true : null
-    plusButton.current ? plusButton.current.disabled = true : null
+    e.target.disabled = true;
+    e.target.innerHTML='<i class="fa-solid fa-spinner fa-spin" style="color: #ffffff"></i>'
     setAddToCartText(<i class="fa-solid fa-spinner fa-spin" style={{color: "#ffffff"}}></i>)
-    setPlusText(<i class="fa-solid fa-spinner fa-spin" style={{color: "#ffffff"}}></i>)
     const response = await fetch(`/api/cart/addToCart/${params.params._id}`, {method: "POST", headers:{"auth-token": localStorage.getItem("auth-token")}})
     const json = await response.json();
     if(json.success){
@@ -47,16 +41,15 @@ export default function Page(params) {
     else{
       toast.error("error adding item to your cart!");
     }
-    addToCartButton.current ? addToCartButton.current.disabled = false : null
-    plusButton.current ? plusButton.current.disabled = false : null
-    setPlusText("+")
+    e.target.disabled = false;
+    e.target.innerHTML = "+";
   }
 
   const removeFromCart = async(e)=>{
     e.preventDefault()
-    minusButton.current ? minusButton.current.disabled = true : null
+    e.target.disabled = true;
+    e.target.innerHTML='<i class="fa-solid fa-spinner fa-spin" style="color: #ffffff"></i>'
     setAddToCartText("Add To Cart")
-    setMinusText(<i class="fa-solid fa-spinner fa-spin" style={{color: "#ffffff"}}></i>)
     const response = await fetch(`/api/cart/removeFromCart/${params.params._id}`, {method: "POST", headers:{"auth-token": localStorage.getItem("auth-token")}})
     const json = await response.json();
     if(json.success){
@@ -65,8 +58,8 @@ export default function Page(params) {
     else{
       toast.error("error removing item from your cart!")
     }
-    minusButton.current ? minusButton.current.disabled = false : null
-    setMinusText("-")
+    e.target.disabled = false;
+    e.target.innerHTML = "-";
   }
 
 useEffect(()=>{
@@ -92,9 +85,9 @@ useEffect(()=>{
             {
                 cart && params.params._id in cart ?
                 <div className="addRemove d-flex" >
-                  <button ref={minusButton} className={`btn btn-warning ${Styles.minusFromCart}`} onClick={removeFromCart}>{minusText}</button>
+                  <button className={`btn btn-warning ${Styles.minusFromCart}`} onClick={removeFromCart}>-</button>
                     <h4 className={Styles.numberOfItems}>{cart[params.params._id]}</h4>
-                  <button ref={plusButton} className={`btn btn-warning ${Styles.plusToCart}`} onClick={addToCart}>{plusText}</button>
+                  <button className={`btn btn-warning ${Styles.plusToCart}`} onClick={addToCart}>+</button>
                 </div>
                 :
                 <button className={`btn btn-warning ${Styles.addToCart}`} ref={addToCartButton} onClick={addToCart}>{addToCartText}</button>

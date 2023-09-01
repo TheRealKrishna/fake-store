@@ -2,7 +2,6 @@
 import Image from "next/image"
 import Styles from "./page.module.css"
 import signUpSVG from "./login.svg"
-import '@fortawesome/fontawesome-free/css/all.min.css';
 import { useState, useRef, useEffect } from "react";
 import toast, { Toaster } from 'react-hot-toast';
 import { useRouter } from "next/navigation";

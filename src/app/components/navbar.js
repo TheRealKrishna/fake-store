@@ -1,6 +1,5 @@
 "use client"
 import Styles from "./navbar.module.css"
-import '@fortawesome/fontawesome-free/css/all.min.css';
 import Link from "next/link";
 import { useSearchParams, usePathname, useRouter } from "next/navigation";
 import { useContext, useEffect, useState } from "react";
@@ -125,23 +124,23 @@ export default function Navbar(params) {
           :
           <>
           {
-            Array.from(Array(10), ()=>{
+            Array.from(Array(11), (e, i)=>{
               return(
-              <>
+              <div key={i}>
               <li className={`${Styles.navLi}`}><a>
               <ContentLoader 
                   speed={1}
-                  width={100}
-                  height={110}
+                  width={90}
+                  height={100}
                   viewBox="0 0 100 100"
                   backgroundColor="#dedede"
                   foregroundColor="#bfbfbf"
                 >
-                <rect x="0" y="0" rx="3" ry="3" width="80" height="15" />
+                <rect x="0" y="0" rx="3" ry="3" width="90" height="15" />
               </ContentLoader>
               </a>
               </li>
-              </>
+              </div>
               )
             })
           }
