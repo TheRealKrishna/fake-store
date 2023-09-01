@@ -35,7 +35,7 @@ export default function ProfileBox(props) {
       }
     if(!localStorage.getItem("auth-token")){
       router.push("/auth/login")
-      return(<Loader margin="300px"></Loader>)
+      return(<Loader marginTop="300px" marginBottom="300px"></Loader>)
     }
     else{
       return (
