@@ -5,8 +5,7 @@
   "scripts": {
     "dev": "node server.js",
     "build": "next build",
-    "start": "node server.js",
-    "lint": "next lint"
+    "start": "NODE_ENV=production node server.js"
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^6.4.2",
@@ -15,7 +14,7 @@
     "eslint-config-next": "13.4.19",
     "jsonwebtoken": "^9.0.1",
     "mongoose": "^7.4.3",
-    "next": "13.4.19",
+    "next": "^13.4.19",
     "next-progress": "^2.3.1",
     "react": "18.2.0",
     "react-content-loader": "^6.2.1",
