@@ -28,6 +28,10 @@ export default function Page() {
 
   const addToCart = async(id, e)=>{
     e.preventDefault()
+    if(!localStorage.getItem("auth-token")){
+      router.push("/auth/login")
+      return
+    }
     e.target.disabled = true
     e.target.innerHTML = '<i class="fa-solid fa-spinner fa-spin" style="color: #ffffff"></i>'
     const response = await fetch(`/api/cart/addToCart/${id}`, {method: "POST", headers:{"auth-token": localStorage.getItem("auth-token")}})

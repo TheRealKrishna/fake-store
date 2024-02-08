@@ -6,12 +6,14 @@ import Image from "next/image";
 import Loader from "@/app/components/loader";
 import cartContext from "@/app/context/cart";
 import { toast } from "react-hot-toast";
+import { useRouter } from "next/navigation";
 
 export default function Page(params) {
   const [product, setProduct] = useState(false);
   const {cart, setCart, fetchCart} = useContext(cartContext);
   const [addToCartText, setAddToCartText] = useState("Add To Cart")
   const addToCartButton = useRef();
+  const router = useRouter();
 
   const getProduct = async()=>{
     const response = await fetch(`/api/products/${params.params._id}`);
@@ -30,6 +32,10 @@ export default function Page(params) {
 
   const addToCart = async(e)=>{
     e.preventDefault()
+    if(!localStorage.getItem("auth-token")){
+      router.push("/auth/login")
+      return
+    }
     e.target.disabled = true;
     e.target.innerHTML='<i class="fa-solid fa-spinner fa-spin" style="color: #ffffff"></i>'
     setAddToCartText(<i class="fa-solid fa-spinner fa-spin" style={{color: "#ffffff"}}></i>)

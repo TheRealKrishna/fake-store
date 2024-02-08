@@ -6,6 +6,7 @@
     background-color: #131921;
     height: 65px;
     padding-top: 13px;
+    width: 100%;
 }
 
 .pass{
@@ -128,6 +129,10 @@
     padding: 7px 110px;
 }
 
+.categoryBar > ul {
+    width: 100vw;
+}
+
 .navLi{
     list-style: none;
     display: inline-block;
@@ -137,12 +142,12 @@
     margin-right: 20px;
     cursor: pointer;
     list-style: none;
+    font-family: sans-serif;
 }
 
 .navLi > a {
     text-decoration: none;
     color: white;
-    font-family: sans-serif;
 }
 
 .navLi:hover{

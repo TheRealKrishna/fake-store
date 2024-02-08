@@ -114,9 +114,9 @@ export default function Navbar(params) {
           {
           categories.map((category)=>{
             return(
-              <>
+              <span key={category}>
             <li className={`${Styles.navLi} ${pathname === `/category/${category.replace(" ", "%20")}` ? Styles.navLiActive : ""}`}><Link href={`/category/${category}`}>{category.slice(0, 1).toUpperCase() + category.slice(1)}</Link></li>
-            </>
+            </span>
             )
           })
           }
@@ -126,7 +126,7 @@ export default function Navbar(params) {
           {
             Array.from(Array(11), (e, i)=>{
               return(
-              <div key={i}>
+              <span key={i}>
               <li className={`${Styles.navLi}`}><a>
               <ContentLoader 
                   speed={1}
@@ -140,7 +140,7 @@ export default function Navbar(params) {
               </ContentLoader>
               </a>
               </li>
-              </div>
+              </span>
               )
             })
           }

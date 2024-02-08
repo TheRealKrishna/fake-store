@@ -7,14 +7,20 @@ import { toast } from "react-hot-toast";
 import { useContext, useRef, useState } from "react";
 import Spinner from "./spinner";
 import cartContext from "../context/cart";
+import { useRouter } from "next/navigation";
 
 export default function Product(props) {
   const {cart, setCart, fetchCart} = useContext(cartContext);
   const [addToCartText, setAddToCartText] = useState("Add To Cart")
   const addToCartButton = useRef();
+  const router = useRouter()
 
   const addToCart = async(e)=>{
     e.preventDefault()
+    if(!localStorage.getItem("auth-token")){
+      router.push("/auth/login")
+      return
+    }
     e.target.disabled = true;
     e.target.innerHTML='<i class="fa-solid fa-spinner fa-spin" style="color: #ffffff"></i>'
     setAddToCartText(<i class="fa-solid fa-spinner fa-spin" style={{color: "#ffffff"}}></i>)
