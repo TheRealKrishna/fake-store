@@ -78,7 +78,7 @@ export default function Page() {
             <hr />
             <div className="container">
             {
-              products ?
+              products && cart ?
               Object.keys(cart)?.length > 0 ? products.map((product)=>{
                 return (
                   <>

@@ -2,4 +2,5 @@
 
 html body {
     background: #EAEDED;
+    overflow-x: hidden !important;
 }

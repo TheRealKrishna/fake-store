@@ -19,7 +19,7 @@ export async function POST(request){
             password: securePassword,
         })
         await user.save();
-        const token = JWT.sign({_id: req._id}, process.env.JWT_SECRET);
+        const token = JWT.sign({_id: user._id}, process.env.JWT_SECRET);
         return NextResponse.json({token:token, success:true}, {status: 200})
     }
     catch(err){

@@ -5,19 +5,19 @@ const UserSchema = new mongoose.Schema({
     email: {
         type: String,
         required: true,
-        unique:true
+        unique: true
     },
     password: {
         type: String,
         required: true
     },
-    active:{
-        type:Boolean,
-        default:true
+    active: {
+        type: Boolean,
+        default: true
     },
-    type:{
-        type:String,
-        default:"member"
+    type: {
+        type: String,
+        default: "member"
     },
     firstName: {
         type: String,
@@ -27,17 +27,17 @@ const UserSchema = new mongoose.Schema({
         type: String,
         default: ""
     },
-    gender:{
-        type:String,
+    gender: {
+        type: String,
         default: ""
     },
     phoneNumber: {
         type: Number,
         default: ""
     },
-    address:{
-        type:Object,
-        default:{
+    address: {
+        type: Object,
+        default: {
             address1: "",
             address2: "",
             zipcode: "",
@@ -51,7 +51,7 @@ const UserSchema = new mongoose.Schema({
         type: Object,
         default: new Object()
     },
-})
+}, { minimize: false })
 
 const User = mongoose.models.user || mongoose.model("user", UserSchema);
 

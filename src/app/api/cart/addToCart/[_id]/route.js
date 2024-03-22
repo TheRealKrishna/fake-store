@@ -20,7 +20,7 @@ export async function POST(request, params){
             return NextResponse.json({error:"Invalid Product!",success:false}, {status:500})
         }
         let cart = await user.cart
-        if(product._id in cart){
+        if(cart[product._id]){
             cart[product._id] += 1;
         }
         else{
